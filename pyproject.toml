@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "argparse>=1.4.0",
+    "art>=6.5",
     "pyinstaller>=6.19.0",
     "rich>=14.3.2",
 ]

@@ -4,7 +4,14 @@ import re
 import shlex
 import sys
 from argparse import ArgumentParser
-from rich import print, print_json
+from rich import print, print_json, pretty, box
+from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
+from rich.align import Align
+from art import text2art
+from utlis import getCurrentVersion
+pretty.install()
 
 def getJournalPath() -> str|None:
     if sys.platform == 'win32':
@@ -211,6 +218,7 @@ def interactive_search_loop(
         )
         print(f'Found {matches} matching entries.')
 
+console = Console(log_path=False)
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument("-e", "--event",
@@ -235,6 +243,15 @@ if __name__ == '__main__':
                     action="store_true", dest="case_sensitive", default=False,
                     help="use case-sensitive matching (default is case-insensitive)")
     args = parser.parse_args()
+    if console.width >= 140:
+        console_size = 'xlarge'
+    elif console.width >= 120:
+        console_size = 'large'
+    elif console.width >= 80:
+        console_size = 'medium'
+    else:
+        console_size = 'small'
+    print(Panel(Align.center(Text(text2art("EDJS", f'rnd-{console_size}'))), title=f"Elite Dangerous Journal Searcher {getCurrentVersion()}", subtitle="by Skywalker-Elite", style='bold blue', expand=True, padding=1, box=box.DOUBLE))
     assert args.path is not None, "Journal path cannot be None"
     assert path.exists(args.path), f"Journal path does not exist: {args.path}"
     print(f'Using journal path: {args.path}')
