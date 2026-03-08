@@ -10,19 +10,9 @@ from rich.panel import Panel
 from rich.text import Text
 from rich.align import Align
 from art import text2art
-from utlis import getCurrentVersion
+from utlis import getCurrentVersion, getJournalPath
 pretty.install()
 
-def getJournalPath() -> str|None:
-    if sys.platform == 'win32':
-        user_path = environ.get('USERPROFILE')
-        return path.join(user_path, 'Saved Games', 'Frontier Developments', 'Elite Dangerous')
-    elif sys.platform == 'linux':
-        user_path = path.expanduser('~')
-        return path.join(user_path, '.local', 'share', 'Steam', 'steamapps', 'compatdata', '359320', 'pfx', 'drive_c', 'users', 'steamuser', 'Saved Games', 'Frontier Developments', 'Elite Dangerous')
-    else:
-        return None
-    
 JOURNAL_PATH = getJournalPath()
 
 def _discover_journals(journal_path: str) -> list[str]:
