@@ -1,30 +1,47 @@
 # Journal Searcher
 
-Search Elite Dangerous journal entries by event and/or text.
+A lightweight tool to search Elite Dangerous journal entries by event and/or text.
+
+## Running from source
+Prerequisites:
+
+Python 3.12 or later, and [uv](https://docs.astral.sh/uv/guides/install-python/) for dependency management.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/skywalker-elite/Elite-Dangerous-Journal-Searcher.git
+   cd Elite-Dangerous-Journal-Searcher
+   ```
+
+2. Sync dependencies:
+   ```bash
+   uv sync
+   ```
+
+And you're ready to run the script!
 
 ## Usage
 
 - One-off search by word:
-	- `uv run ".\\journal searcher.py" -w Stronghold -l 50`
+	- `uv run main.py -w Stronghold -l 50`
 - One-off search by event:
-	- `uv run ".\\journal searcher.py" -e FSDJump -l 25`
+	- `uv run main.py -e FSDJump -l 25`
 - Search by both event and word:
-	- `uv run ".\\journal searcher.py" -e FSDJump -w Stronghold -l 25`
+	- `uv run main.py -e FSDJump -w Stronghold -l 25`
 - Exact matching:
-	- `uv run ".\\journal searcher.py" -e FSDJump --exact`
-	- `uv run ".\\journal searcher.py" -e FSDJump -x`
+	- `uv run main.py -e FSDJump --exact`
+	- `uv run main.py -e FSDJump -x`
 - Case-sensitive matching:
-	- `uv run ".\\journal searcher.py" -w Stronghold --case-sensitive`
-	- `uv run ".\\journal searcher.py" -w Stronghold -c`
+	- `uv run main.py -w Stronghold --case-sensitive`
+	- `uv run main.py -w Stronghold -c`
 
 ## Interactive multi-search mode
 
 The script now loads and parses journal files once, keeps them in memory, and lets you run multiple searches without re-reading files.
 
 - Start interactive mode directly:
-	- `uv run ".\\journal searcher.py"`
+	- `uv run main.py`
 - Run one initial search, then remain interactive:
-	- `uv run ".\\journal searcher.py" -w Stronghold -i`
+	- `uv run main.py -w Stronghold -i`
 
 In interactive mode, type `q`, `quit`, or `exit` at a prompt to close the tool.
 Use the same flags as CLI per query, for example:
