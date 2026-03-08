@@ -2,6 +2,11 @@
 
 A lightweight command-line tool to search Elite Dangerous journal entries by event and/or text.
 
+## Running the executable
+Pre-built executables are available on the [Releases](https://github.com/skywalker-elite/Elite-Dangerous-Journal-Searcher/releases) page.
+
+To run the executable, simply download the appropriate version for your operating system, and run the `EDJS` executable. The rest of the usage is the same as running from source, just replace `uv run main.py` with `./EDJS` (Linux/Mac) or `EDJS.exe` (Windows). You can also just double-click the executable to start in interactive mode.
+
 ## Running from source
 Prerequisites:
 
